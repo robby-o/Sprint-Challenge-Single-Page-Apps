@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ElementCard from "./ElementCard";
 import styled from "styled-components";
+import { element } from "prop-types";
 
 const StyledInput = styled.input`
   width: 100%;
@@ -22,21 +23,33 @@ export default function SearchForm({ data, match }) {
     setSearchTerm(event.target.value);
   };
 
-  if (match.path === "/character") {
-    const results = !searchTerm
-      ? data
-      : data.filter(character =>
-          character.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
-        );
-    return (
-      <section className="search-form">
-        <StyledInput
-          type="text"
-          placeholder="Search"
-          value={searchTerm}
-          onChange={handleChange}
-        />
-        {results.map(character => {
+  console.log(data);
+
+  const results = !searchTerm
+    ? data
+    : data.filter(
+        element =>
+          element.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
+          (element.type &&
+            element.type
+              .toLowerCase()
+              .includes(searchTerm.toLocaleLowerCase())) ||
+          (element.dimension && element.dimension.includes(searchTerm)) ||
+          (element.air_date && element.air_date.includes(searchTerm)) ||
+          (element.episode && element.episode.includes(searchTerm))
+      );
+
+  return (
+    <section className="search-form">
+      <StyledInput
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={handleChange}
+      />
+
+      {match.path === "/character" &&
+        results.map(character => {
           return (
             <ElementCard
               key={character.id}
@@ -45,25 +58,9 @@ export default function SearchForm({ data, match }) {
             />
           );
         })}
-      </section>
-    );
-  }
 
-  if (match.path === "/location") {
-    const results = !searchTerm
-      ? data
-      : data.filter(location =>
-          location.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
-        );
-    return (
-      <section className="search-form">
-        <StyledInput
-          type="text"
-          placeholder="Search"
-          value={searchTerm}
-          onChange={handleChange}
-        />
-        {results.map(location => {
+      {match.path === "/location" &&
+        results.map(location => {
           return (
             <ElementCard
               key={location.id}
@@ -73,25 +70,9 @@ export default function SearchForm({ data, match }) {
             />
           );
         })}
-      </section>
-    );
-  }
 
-  if (match.path === "/episode") {
-    const results = !searchTerm
-      ? data
-      : data.filter(episode =>
-          episode.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
-        );
-    return (
-      <section className="search-form">
-        <StyledInput
-          type="text"
-          placeholder="Search"
-          value={searchTerm}
-          onChange={handleChange}
-        />
-        {results.map(episode => {
+      {match.path === "/episode" &&
+        results.map(episode => {
           return (
             <ElementCard
               key={episode.id}
@@ -101,7 +82,6 @@ export default function SearchForm({ data, match }) {
             />
           );
         })}
-      </section>
-    );
-  }
+    </section>
+  );
 }
