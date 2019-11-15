@@ -27,22 +27,22 @@ export default function SearchForm({ data, match }) {
     : data.filter(
         element =>
           element.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
-          (element.type &&
+          (match.path === "/location" &&
             element.type
               .toLowerCase()
               .includes(searchTerm.toLocaleLowerCase())) ||
-          (element.dimension &&
+          (match.path === "/location" &&
             element.dimension
               .toLowerCase()
               .includes(searchTerm.toLocaleLowerCase())) ||
-          (element.air_date &&
+          (match.path === "/episode" &&
             element.air_date
               .toLowerCase()
               .includes(searchTerm.toLocaleLowerCase())) ||
-          (element.episode &&
+          (match.path === "/episode" &&
             element.episode
               .toLowerCase()
-              .includes(searchTerm.toLocaleLowerCase))
+              .includes(searchTerm.toLocaleLowerCase()))
       );
 
   return (
