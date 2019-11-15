@@ -15,7 +15,7 @@ function CharacterCard({ name, image }) {
   return (
     <>
       <StyledParagraph>{name}</StyledParagraph>
-      <img src={`${image}`} />
+      <img src={`${image}`} alt={`${name}`} />
     </>
   );
 }

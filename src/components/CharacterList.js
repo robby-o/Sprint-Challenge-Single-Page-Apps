@@ -5,19 +5,17 @@ import CharacterCard from "./CharacterCard";
 export default function CharacterList() {
   const [characters, setCharacters] = useState([]);
 
-  // TODO: Add API Request here - must run in `useEffect`
-  //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  useEffect(() => {
-    axios
-      .get(`https://rickandmortyapi.com/api/character/`)
-      .then(response => {
-        console.log(response);
-        setCharacters(response.data.results);
-      })
-      .catch(error => {
-        console.log("something is broken...", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://rickandmortyapi.com/api/character/`)
+  //     .then(response => {
+  //       console.log(response);
+  //       setCharacters(response.data.results);
+  //     })
+  //     .catch(error => {
+  //       console.log("something is broken...", error);
+  //     });
+  // }, []);
 
   return (
     <section className="character-list">
