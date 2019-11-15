@@ -24,7 +24,7 @@ const StyledDiv = styled.div`
   border-radius: 2px;
 `;
 
-export default function LocationCard({ name, type, dimension, residents }) {
+export default function LocationCard({ name, type, dimension }) {
   return (
     <StyledDiv>
       <StyledParagraph>{name}</StyledParagraph>

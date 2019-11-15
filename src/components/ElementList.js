@@ -26,6 +26,11 @@ export default function ElementList({ match }) {
   console.log(match);
   const [data, setData] = useState([]);
 
+  const listName =
+    match.path
+      .replace("/", "")
+      .charAt(0)
+      .toUpperCase() + match.path.slice(2);
   useEffect(() => {
     axios
       .get(`https://rickandmortyapi.com/api/${match.path}/`)
@@ -40,7 +45,7 @@ export default function ElementList({ match }) {
   return (
     <StyledSection className="character-list">
       <StyledDiv>
-        <StyledH2>Character List</StyledH2>
+        <StyledH2>{listName} List</StyledH2>
         <SearchForm data={data} match={match} />
       </StyledDiv>
     </StyledSection>
