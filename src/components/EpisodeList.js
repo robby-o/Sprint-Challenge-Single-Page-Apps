@@ -22,14 +22,14 @@ const StyledDiv = styled.div`
   margin: 0;
 `;
 
-export default function LocationsList() {
-  const [locations, setLocations] = useState([]);
+export default function EpisodeList() {
+  const [episodes, setEpisodes] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`https://rickandmortyapi.com/api/location/`)
+      .get(`https://rickandmortyapi.com/api/episode/`)
       .then(response => {
-        setLocations(response.data.results);
+        setEpisodes(response.data.results);
       })
       .catch(error => {
         console.log("something is broken...", error);
@@ -37,10 +37,10 @@ export default function LocationsList() {
   }, []);
 
   return (
-    <StyledSection className="location-list">
+    <StyledSection className="episode-list">
       <StyledDiv>
-        <StyledH2>Location List</StyledH2>
-        <SearchForm locations={locations} />
+        <StyledH2>Episode List</StyledH2>
+        <SearchForm episodes={episodes} />
       </StyledDiv>
     </StyledSection>
   );

@@ -24,13 +24,12 @@ const StyledDiv = styled.div`
   border-radius: 2px;
 `;
 
-export default function LocationCard({ name, type, dimension, residents }) {
+export default function EpisodeCard({ name, airDate, episode }) {
   return (
     <StyledDiv>
       <StyledParagraph>{name}</StyledParagraph>
-      <StyledParagraph>{type}</StyledParagraph>
-      <StyledParagraph>{dimension}</StyledParagraph>
-      {/* <StyledParagraph>{residents}</StyledParagraph> */}
+      <StyledParagraph>{airDate}</StyledParagraph>
+      <StyledParagraph>{episode}</StyledParagraph>
     </StyledDiv>
   );
 }
