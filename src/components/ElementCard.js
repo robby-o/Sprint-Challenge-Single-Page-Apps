@@ -23,18 +23,23 @@ const StyledDiv = styled.div`
   border-radius: 2px;
 `;
 
-function ElementCard({ name, image, type, dimension, airDate, episode }) {
+function ElementCard(props) {
+  const { name, image, type, dimension, air_date, episode } = props.data;
+  const { path } = props.match;
+
   return (
     <StyledDiv>
       <StyledParagraph>{name}</StyledParagraph>
 
-      {image && <img src={`${image}`} alt={`${name}`} />}
+      {path === "/character" && <img src={`${image}`} alt={`${name}`} />}
 
-      {airDate && <StyledParagraph>{airDate}</StyledParagraph>}
-      {episode && <StyledParagraph>{episode}</StyledParagraph>}
+      {path === "/episode" && <StyledParagraph>{air_date}</StyledParagraph> && (
+        <StyledParagraph>{episode}</StyledParagraph>
+      )}
 
-      {type && <StyledParagraph>{type}</StyledParagraph>}
-      {dimension && <StyledParagraph>{dimension}</StyledParagraph>}
+      {path === "/location" && <StyledParagraph>{type}</StyledParagraph> && (
+        <StyledParagraph>{dimension}</StyledParagraph>
+      )}
     </StyledDiv>
   );
 }

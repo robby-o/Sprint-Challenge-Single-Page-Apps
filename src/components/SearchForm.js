@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ElementCard from "./ElementCard";
 import styled from "styled-components";
-import { element } from "prop-types";
 
 const StyledInput = styled.input`
   width: 100%;
@@ -22,8 +21,6 @@ export default function SearchForm({ data, match }) {
   const handleChange = event => {
     setSearchTerm(event.target.value);
   };
-
-  console.log(data);
 
   const results = !searchTerm
     ? data
@@ -51,36 +48,20 @@ export default function SearchForm({ data, match }) {
       {match.path === "/character" &&
         results.map(character => {
           return (
-            <ElementCard
-              key={character.id}
-              name={character.name}
-              image={character.image}
-            />
+            <ElementCard key={character.id} data={character} match={match} />
           );
         })}
 
       {match.path === "/location" &&
         results.map(location => {
           return (
-            <ElementCard
-              key={location.id}
-              name={location.name}
-              type={location.type}
-              dimension={location.dimension}
-            />
+            <ElementCard key={location.id} data={location} match={match} />
           );
         })}
 
       {match.path === "/episode" &&
         results.map(episode => {
-          return (
-            <ElementCard
-              key={episode.id}
-              name={episode.name}
-              airDate={episode.air_date}
-              episode={episode.episode}
-            />
-          );
+          return <ElementCard key={episode.id} data={episode} match={match} />;
         })}
     </section>
   );
