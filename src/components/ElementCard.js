@@ -1,5 +1,4 @@
 import React from "react";
-
 import styled from "styled-components";
 
 const StyledParagraph = styled.p`
@@ -18,18 +17,26 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0;
-  margin: 2% 0;
+  padding: 5%;
+  margin: 5% 0;
   border: 1px dotted black;
   border-radius: 2px;
 `;
 
-export default function LocationCard({ name, type, dimension }) {
+function ElementCard({ name, image, type, dimension, airDate, episode }) {
   return (
     <StyledDiv>
       <StyledParagraph>{name}</StyledParagraph>
-      <StyledParagraph>{type}</StyledParagraph>
-      <StyledParagraph>{dimension}</StyledParagraph>
+
+      {image && <img src={`${image}`} alt={`${name}`} />}
+
+      {airDate && <StyledParagraph>{airDate}</StyledParagraph>}
+      {episode && <StyledParagraph>{episode}</StyledParagraph>}
+
+      {type && <StyledParagraph>{type}</StyledParagraph>}
+      {dimension && <StyledParagraph>{dimension}</StyledParagraph>}
     </StyledDiv>
   );
 }
+
+export default ElementCard;

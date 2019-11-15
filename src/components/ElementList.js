@@ -23,7 +23,6 @@ const StyledDiv = styled.div`
 `;
 
 export default function ElementList({ match }) {
-  console.log(match);
   const [data, setData] = useState([]);
 
   const listName =
@@ -31,6 +30,7 @@ export default function ElementList({ match }) {
       .replace("/", "")
       .charAt(0)
       .toUpperCase() + match.path.slice(2);
+
   useEffect(() => {
     axios
       .get(`https://rickandmortyapi.com/api/${match.path}/`)

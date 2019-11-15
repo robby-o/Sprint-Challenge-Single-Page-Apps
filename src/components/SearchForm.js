@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import CharacterCard from "./CharacterCard";
-import LocationCard from "./LocationCard";
+import ElementCard from "./ElementCard";
 import styled from "styled-components";
-import EpisodeCard from "./EpisodeCard";
 
 const StyledInput = styled.input`
   width: 100%;
@@ -40,7 +38,7 @@ export default function SearchForm({ data, match }) {
         />
         {results.map(character => {
           return (
-            <CharacterCard
+            <ElementCard
               key={character.id}
               name={character.name}
               image={character.image}
@@ -67,12 +65,11 @@ export default function SearchForm({ data, match }) {
         />
         {results.map(location => {
           return (
-            <LocationCard
+            <ElementCard
               key={location.id}
               name={location.name}
               type={location.type}
               dimension={location.dimension}
-              residents={location.residents}
             />
           );
         })}
@@ -96,7 +93,7 @@ export default function SearchForm({ data, match }) {
         />
         {results.map(episode => {
           return (
-            <EpisodeCard
+            <ElementCard
               key={episode.id}
               name={episode.name}
               airDate={episode.air_date}
