@@ -31,9 +31,18 @@ export default function SearchForm({ data, match }) {
             element.type
               .toLowerCase()
               .includes(searchTerm.toLocaleLowerCase())) ||
-          (element.dimension && element.dimension.includes(searchTerm)) ||
-          (element.air_date && element.air_date.includes(searchTerm)) ||
-          (element.episode && element.episode.includes(searchTerm))
+          (element.dimension &&
+            element.dimension
+              .toLowerCase()
+              .includes(searchTerm.toLocaleLowerCase())) ||
+          (element.air_date &&
+            element.air_date
+              .toLowerCase()
+              .includes(searchTerm.toLocaleLowerCase())) ||
+          (element.episode &&
+            element.episode
+              .toLowerCase()
+              .includes(searchTerm.toLocaleLowerCase))
       );
 
   return (

@@ -26,7 +26,7 @@ const StyledDiv = styled.div`
 function ElementCard(props) {
   const { name, image, type, dimension, air_date, episode } = props.data;
   const { path } = props.match;
-  console.log(type);
+  console.log(props);
   return (
     <StyledDiv>
       <StyledParagraph>{name}</StyledParagraph>
