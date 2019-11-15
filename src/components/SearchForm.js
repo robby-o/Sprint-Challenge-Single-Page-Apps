@@ -18,16 +18,16 @@ const StyledInput = styled.input`
   margin-top: 2%;
 `;
 
-export default function SearchForm({ characters, locations, episodes }) {
+export default function SearchForm({ data, match }) {
   const [searchTerm, setSearchTerm] = useState("");
   const handleChange = event => {
     setSearchTerm(event.target.value);
   };
 
-  if (characters) {
+  if (match.path === "/character") {
     const results = !searchTerm
-      ? characters
-      : characters.filter(character =>
+      ? data
+      : data.filter(character =>
           character.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
         );
     return (
@@ -51,10 +51,10 @@ export default function SearchForm({ characters, locations, episodes }) {
     );
   }
 
-  if (locations) {
+  if (match.path === "/location") {
     const results = !searchTerm
-      ? locations
-      : locations.filter(location =>
+      ? data
+      : data.filter(location =>
           location.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
         );
     return (
@@ -80,10 +80,10 @@ export default function SearchForm({ characters, locations, episodes }) {
     );
   }
 
-  if (episodes) {
+  if (match.path === "/episode") {
     const results = !searchTerm
-      ? episodes
-      : episodes.filter(episode =>
+      ? data
+      : data.filter(episode =>
           episode.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
         );
     return (

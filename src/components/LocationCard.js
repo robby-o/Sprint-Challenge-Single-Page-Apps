@@ -30,7 +30,6 @@ export default function LocationCard({ name, type, dimension, residents }) {
       <StyledParagraph>{name}</StyledParagraph>
       <StyledParagraph>{type}</StyledParagraph>
       <StyledParagraph>{dimension}</StyledParagraph>
-      {/* <StyledParagraph>{residents}</StyledParagraph> */}
     </StyledDiv>
   );
 }

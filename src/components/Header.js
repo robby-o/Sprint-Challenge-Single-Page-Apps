@@ -1,8 +1,6 @@
 import React from "react";
 import WelcomePage from "./WelcomePage";
-import CharacterList from "./CharacterList";
-import LocationsList from "./LocationsList";
-import EpisodeList from "./EpisodeList";
+import ElementList from "./ElementList";
 
 import { Route, NavLink } from "react-router-dom";
 
@@ -16,15 +14,15 @@ export default function Header() {
           Welcome
         </NavLink>
 
-        <NavLink to="/character-list">Character List</NavLink>
-        <NavLink to="/location-list">Location List</NavLink>
-        <NavLink to="/episode-list">Episode List</NavLink>
+        <NavLink to="/character">Character List</NavLink>
+        <NavLink to="/location">Location List</NavLink>
+        <NavLink to="/episode">Episode List</NavLink>
       </nav>
 
       <Route exact path="/" component={WelcomePage} />
-      <Route path="/character-list" component={CharacterList} />
-      <Route path="/location-list" component={LocationsList} />
-      <Route path="/episode-list" component={EpisodeList} />
+      <Route path="/character" render={props => <ElementList {...props} />} />
+      <Route path="/location" render={props => <ElementList {...props} />} />
+      <Route path="/episode" render={props => <ElementList {...props} />} />
     </header>
   );
 }

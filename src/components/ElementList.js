@@ -22,25 +22,26 @@ const StyledDiv = styled.div`
   margin: 0;
 `;
 
-export default function CharacterList() {
-  const [characters, setCharacters] = useState([]);
+export default function ElementList({ match }) {
+  console.log(match);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`https://rickandmortyapi.com/api/character/`)
+      .get(`https://rickandmortyapi.com/api/${match.path}/`)
       .then(response => {
-        setCharacters(response.data.results);
+        setData(response.data.results);
       })
       .catch(error => {
         console.log("something is broken...", error);
       });
-  }, []);
+  }, [match.path]);
 
   return (
     <StyledSection className="character-list">
       <StyledDiv>
         <StyledH2>Character List</StyledH2>
-        <SearchForm characters={characters} />
+        <SearchForm data={data} match={match} />
       </StyledDiv>
     </StyledSection>
   );
